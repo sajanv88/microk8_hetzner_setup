@@ -32,11 +32,11 @@ spec:
             - containerPort: ${PG_PORT}
           env:
             - name: POSTGRES_DB
-              value: ${PG_DATABASE}
+              value: $PG_DATABASE
             - name: POSTGRES_USER
-              value: ${PG_USER}
+              value: $PG_USER
             - name: POSTGRES_PASS
-              value: ${PG_PASSWORD}
+              value: $PG_PASSWORD
             - name: --auth
               value: "md5"
             - name: POSTGRES_MULTIPLE_EXTENSIONS
@@ -64,8 +64,8 @@ metadata:
     app: postgres
 spec:
   ports:
-    - port: ${PG_PORT}
-      targetPort: ${PG_PORT}
+    - port: $PG_PORT
+      targetPort: $PG_PORT
   selector:
     app: postgres
     task: postgres
