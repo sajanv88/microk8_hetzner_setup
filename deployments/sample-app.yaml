@@ -8,10 +8,10 @@ metadata:
 spec:
     tls:
         - hosts:
-              - sampleapp.dev.sajankumarv.com
+              - sampleapp.sajankumarv.com
           secretName: whoami-tls
     rules:
-        - host: "sampleapp.dev.sajankumarv.com"
+        - host: "sampleapp.sajankumarv.com"
           http:
               paths:
                   - path: /
