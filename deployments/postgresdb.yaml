@@ -29,7 +29,7 @@ spec:
         - name: postgres
           image: kartoza/postgis:12.0
           ports:
-            - containerPort: ${PG_PORT}
+            - containerPort: $PG_PORT
           env:
             - name: POSTGRES_DB
               value: $PG_DATABASE
