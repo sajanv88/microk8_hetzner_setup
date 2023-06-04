@@ -8,6 +8,7 @@ This is a simple microk8 hassle free setup that could be used in any cloud serve
     - cert-manager.staging.yaml => will be used of staging env (Optional)
     - sample-app.yaml => just use to verify that everything you have configured works fine. 
     - postgresdb.yaml => will create a postgres database. 
+    - pgadminer.yaml => A simple tool to connect your postgres database. (optional)
 
 
 Note: For `postgres` database the sensitive informations are all injected via `envsubst` 
