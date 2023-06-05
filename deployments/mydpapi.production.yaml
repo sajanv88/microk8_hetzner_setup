@@ -22,13 +22,6 @@ spec:
         - name: mydpapi
           image: ghcr.io/sajanv88/mydpapi:latest
           imagePullPolicy: Always
-          resources:
-            limits:
-              cpu: "500m"
-              memory: 5Gi
-            requests:
-              cpu: "200m"
-              memory: 5Gi
           env:
             - name: ASPNETCORE_URLS
               value: "http://*"
