@@ -13,3 +13,8 @@ This is a simple microk8 hassle free setup that could be used in any cloud serve
 
 Note: For `postgres` database the sensitive informations are all injected via `envsubst` 
 For example: `envsubst < deployments/postgresdb.yaml| kubectl apply -f -`
+
+## Docker registry auth setup
+
+-  ```kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+```
