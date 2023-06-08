@@ -27,7 +27,7 @@ spec:
             - name: API
               value: $API_ENDPOINT
             - name: PORT
-              value: 4001
+              value: "4001"
             - name: HOST
               value: "https://mydpui.sajankumarv.com"
           ports:
