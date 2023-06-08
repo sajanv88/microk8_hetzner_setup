@@ -27,11 +27,11 @@ spec:
             - name: API
               value: $API_ENDPOINT
             - name: PORT
-              value: "80"
+              value: 4001
             - name: HOST
               value: "https://mydpui.sajankumarv.com"
           ports:
-            - containerPort: 80
+            - containerPort: 4001
 ---
 kind: Service
 apiVersion: v1
