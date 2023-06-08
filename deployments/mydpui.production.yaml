@@ -1,0 +1,77 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mydpui
+  labels:
+    app.kubernetes.io/name: "mydpui"
+    app.kubernetes.io/part-of: "mydpui"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mydpui
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: "mydpui"
+        app.kubernetes.io/part-of: "mydpui"
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: mydpui
+          image: ghcr.io/sajanv88/mydpui:latest
+          imagePullPolicy: Always
+          env:
+            - name: API
+              value: $API_ENDPOINT
+            - name: PORT
+              value: "80"
+            - name: HOST
+              value: "https://mydpui.sajankumarv.com"
+          ports:
+            - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mydpui
+  labels:
+    app.kubernetes.io/name: "mydpui"
+    app.kubernetes.io/part-of: "mydpui"
+spec:
+  selector:
+    app.kubernetes.io/name: mydpui
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: http-ingress-mydpui
+  annotations:
+    cert-manager.io/cluster-issuer: "lets-encrypt"
+    kubernetes.io/ingress.class: "public"
+    nginx.ingress.kubernetes.io/rewrite-target: "/$2"
+  labels:
+    app.kubernetes.io/part-of: "mydpui"
+spec:
+  tls:
+    - hosts:
+        - mydpui.sajankumarv.com
+      secretName: mydpui-tls
+  rules:
+    - host: mydpui.sajankumarv.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: mydpui
+                port:
+                  number: 80
+            pathType: Prefix
+            path: /()(.*)
