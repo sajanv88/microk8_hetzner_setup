@@ -16,6 +16,7 @@ spec:
         app.kubernetes.io/name: "mydpui"
         app.kubernetes.io/part-of: "mydpui"
     spec:
+      restartPolicy: Always
       imagePullSecrets:
         - name: regcred
       containers:
