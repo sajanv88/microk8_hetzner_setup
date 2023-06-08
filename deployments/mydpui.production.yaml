@@ -28,6 +28,8 @@ spec:
               value: $API_ENDPOINT
             - name: PORT
               value: "4001"
+            - name: ORIGIN
+              value: https://mydpui.sajankumarv.com
           ports:
             - containerPort: 4001
 ---
@@ -46,7 +48,7 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 4001
 ---
 kind: Ingress
 apiVersion: networking.k8s.io/v1
