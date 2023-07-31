@@ -15,6 +15,6 @@ Note: For `postgres` database the sensitive informations are all injected via `e
 For example: `envsubst < deployments/postgresdb.yaml| kubectl apply -f -`
 
 ## Docker registry auth setup
-
--  ```kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+ ```
+   kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
 ```
